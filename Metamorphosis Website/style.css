@@ -44,7 +44,6 @@ body {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 .background-container {
-    background-image: url('images/stock/forest_background.jpg');
     background-size: cover; 
     background-position: center; 
     width: 100%; 
