@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stages of Metamorphosis</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+</head>
+<body>
+<div class="header">
+    <h1>Stages of Metamorphosis</h1>
+</div>
+<div class="background-container"></div>
+<div class="container">
+    <div class="content">
+        <div class="left-section">
+            <h2 id="insect">Select an Insect:</h2>
+            <select class="custom-select" id="insect-select" onchange="startMetamorphosis()">
+                <option disabled selected value> select here </option>
+                <option value="butterfly">Butterfly</option>
+                <option value="grasshopper">Grasshopper</option>
+                <option value="silverfish">Silverfish</option>
+            </select>
+            <br><br>
+            <button class="green-button" onclick="previousStage()">Back</button>
+            <button class="green-button" onclick="nextStage()">Next</button>
+            <br><br>
+            <img id="insect-img" src="images/stock/metamorphosis.jpg" alt="Insect Image">
+        </div>
+        <div class="right-section">
+            <h2 id="stageName">What is metamorphosis?</h2>
+            <div class="explanation" id="explanation">
+                Insects undergo physical transformations known as metamorphosis. They can go through 3 different types of metamorphosis: ametabolous, hemimetabolous, and holometabolous. Each group corresponds with how dramatic the changes are, with ametabolous being very little to no change and holometabolous experiencing complete metamorphosis. Check each insect to see how the types of metamorphosis affects their growth!
+            </div>
+        </div>
+        <h2 id="title"> Why metamorphosis is important </h2>
+        <div class="explanation" id="importance">
+            Metamorphosis is an integral key to why insects have been very successful. The diversity within each stage of the process allows insects to thrive in different environments and exploit distinct food resources. The process of metamorphosis has enabled insects to adapt and evolve rapidly to the world around them.
+        </div>
+    </div>
+    <div id="footer">
+        <p>Bryle Tan bpt30</p>
+        <a href="works-cited.html">Works Cited</a>
+    </div>
+</div>
+
+<script>
+var currentStage = 0;
+var stages = [];
+var explanations = [];
+var stageName = [];
+var insect = "";
+var title = "";
+var importance = "";
+
+function startMetamorphosis() {
+    var insectSelect = document.getElementById("insect-select");
+    var selectedInsect = insectSelect.value; 
+
+    switch (selectedInsect) {
+        case "butterfly":
+            insect = "Butterfly";
+            title = "Why butterflies are important";
+            stages = ["images/butterfly/butterfly_egg.jpg", "images/butterfly/butterfly_caterpillar.jpg", "images/butterfly/butterfly_chrysalis.jpg", "images/butterfly/butterfly_adult.jpg"];
+            stageName = ["Egg Stage", "Larva Stage", "Pupa Stage", "Adult Stage"]
+            importance = ""
+            explanations = ["Butterflies are an example of a holometabolous metamorphosis (complete metamorphosis). They start off in the Egg Stage, which they will spend for the next 1-3 weeks.", "The next stage is the Larva Stage, which occurs after the eggs have hatched and caterpillars begin growing. They eat leaves with their chewing mouthparts and will shed skin in a process called molting, which occurs several times throughout this stage.", "The Pupa (Chrysalis) Stage occurs when the caterpillar molts for the last time and forms a hard encasement called a cocoon. This stage is where they undergo the most dramatic changes and where they begin their transition into becoming beautiful butterflies!", "The final stage is the Adult Stage, where the butterfly comes out of the cocoon with four wings and a brand new set of bodyparts. As a holometabolous metamorphosis, the butterfly is unrecognizable from the caterpillar, even having straw-like mouthparts which they use to eat and pollinate flowers."];
+            break;
+        case "grasshopper":
+            insect = "Grasshopper";
+            title = "Why grasshoppers are important";
+            stages = ["images/grasshopper/grasshopper_egg.jpg", "images/grasshopper/grasshopper_nymph.jpg", "images/grasshopper/grasshopper_adult.jpg"];
+            stageName = ["Egg Stage", "Nymph Stage", "Adult Stage"]
+            explanations = ["Grasshoppers are an example of a hemimetabolous metamorphosis (partial metamorphosis). The Egg Stage for grasshoppers begins with a female grasshopper laying eggs underneath the soil or on leaf litters. She sprays a sticky substance on the eggs which forms an egg pod which contains around 10-300 eggs! After around 10 months, the eggs will start to hatch.", "After emerging from the eggs, the grasshoppers are in the Nymph Stage, where they begin to look for plant foliage to eat. The nymphs look similar to their adult version, however they are missing their reproductive organs and wings. They will undergo 5-6 stages of molting before they reach the adult stage.", "The Adult Stage of grasshoppers occur after their final molt. Being a hemimetabolous metamorphosis, the nymph grasshopper looks very similar to the adult grasshopper, but they also grow wings and develop reproductive organs."];
+            break;
+        case "silverfish":
+            insect = "Silverfish";
+            title = "Why silverfish are important";
+            stages = ["images/silverfish/silverfish_egg.jpg", "images/silverfish/silverfish_nymph.jpg", "images/silverfish/silverfish_adult.jpg"];
+            stageName = ["Egg Stage", "Nymph Stage", "Adult Stage"]
+            explanations = ["Silverfish are an example of an ametabolous metamorphosis (no metamorphosis). It begins in the Egg Stage where the egg will take around 3 weeks to hatch. It is common for silverfish to lay their eggs in crevices and cracks.", "In the Nymph Stage, the silverfish come out of their eggs as miniature versions of adult silverfish. They will molt during this stage and continue to do so for the rest of their lives.", "In the Adult Stage, the silverfish has become a bigger version of their nymph counterparts. Since they undergo ametabolous metamorphosis, they will continue to molt and do not develop any new bodyparts."];
+            break;
+        default:
+            stages = [];
+            stageName = [];
+            explanations = [];
+            break;
+    }
+
+    currentStage = 0;
+
+    if (stages.length > 0) {
+        updateImage();
+        updateExplanation();
+        updateStageName();
+        updateInsect();
+    }
+
+}
+
+function nextStage() {
+    if (currentStage < stages.length - 1) {
+        currentStage++;
+        updateImage();
+        updateExplanation();
+        updateStageName();
+        updateInsect();
+    } else {
+        alert("Metamorphosis complete!");
+    }
+}
+
+function previousStage() {
+    if (currentStage > 0) {
+        currentStage--;
+        updateImage();
+        updateExplanation();
+        updateStageName();
+        updateInsect();
+    } else {
+        alert("You are already at the first stage.");
+    }
+}
+
+function updateImage() {
+    var insectImg = document.getElementById("insect-img");
+    insectImg.classList.remove("metamorphosisAnimation");
+    insectImg.style.animation = 'none';
+    setTimeout(function() {
+      insectImg.src = stages[currentStage]; 
+      insectImg.style.animation = 'metamorphosisAnimation 0.5s ease-in-out forwards'; 
+    }, 10);
+}
+
+function updateExplanation() {
+    var explanationDiv = document.getElementById("explanation");
+    explanationDiv.textContent = explanations[currentStage];
+}
+
+function updateStageName() {
+    var stagenameDiv = document.getElementById("stageName");
+    stagenameDiv.textContent = stageName[currentStage];
+}
+
+function updateInsect() {
+    var insectDiv = document.getElementById("insect");
+    insectDiv.textContent = insect;
+}
+</script>
+
+</body>
+</html>

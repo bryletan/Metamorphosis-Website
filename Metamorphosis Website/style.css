@@ -1,0 +1,143 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f3f3;
+    font-size: 20px;
+}
+.header {
+    background-color: #4CAF50;
+    font-size: 20px;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.left-section,
+.right-section {
+    width: 45%;
+    margin-bottom: 20px;
+}
+.left-section img,
+.right-section img {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.explanation {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.background-container {
+    background-image: url('images/stock/forest_background.jpg');
+    background-size: cover; 
+    background-position: center; 
+    width: 100%; 
+    height: 100%; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: -1; 
+    filter: blur(5px); 
+}
+
+.footer {
+    position:fixed;
+    bottom:0;
+    left:0;
+}
+
+.green-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.green-button:hover {
+    background-color: #45a049;
+}
+
+.custom-select select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 25px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.custom-select {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    border: 2px solid #4CAF50;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.custom-select:hover {
+    border-color: #45a049;
+}
+
+.custom-select select:focus {
+    outline: none;
+    border-color: #45a049;
+}
+
+.custom-select select:disabled {
+    background-color: #ddd;
+    color: #999;
+}
+
+.custom-select select option {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.custom-select select option:hover {
+    background-color: #ddd;
+}
+
+@keyframes metamorphosisAnimation {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+#insect-img {
+    opacity: 0; 
+    animation: metamorphosisAnimation 0.5s ease-in-out forwards; 
+}
+
+.image-container {
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
